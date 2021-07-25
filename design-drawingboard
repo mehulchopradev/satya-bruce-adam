@@ -3,11 +3,17 @@
                               Calculator app | Task management app | Library management app
 
 
-textfield for 1st No                       drop down of operations (+, -, *)                      textfield for 2nd No
+textfield for 1st No                      drop down of operations (+, -, *)                      textfield for 2nd No
 
                                                   Calculate button
 
                                             textfield for the ans (readonly)
+
+                                              Live algebraic expression
+                                                      10 * 5 = 50
+
+
+
 
                                                       OR
 
