@@ -10,12 +10,29 @@ class CalculatorForm extends Component {
     firstNo: this.props.firstNo,
     secondNo: this.props.secondNo,
     ans: this.props.ans,
-    operation: '',
+    operation: '+',
   }
 
   // in class level components, event handlers to be defined using es6 arrow syntax
   handleClick = () => {
-    console.log(this.state);
+    const { firstNo, secondNo, operation } = this.state;
+
+    const ifirstNo = parseInt(firstNo);
+    const isecondNo = parseInt(secondNo);
+
+    let ans;
+    switch (operation) {
+      case '+': ans = ifirstNo + isecondNo;
+        break;
+      case '-': ans = ifirstNo - isecondNo;
+        break;
+      default: ans = ifirstNo * isecondNo;
+        break;
+    }
+
+    this.setState({
+      ans,
+    }); // render()
   }
 
   handleChange = (event) => {
@@ -35,19 +52,19 @@ class CalculatorForm extends Component {
     return (
       <div className='calculator-container'>
         <div className='row'>
-          <input type="text" name="firstNo" placeholder="enter the 1st no" value={this.state.firstNo} onChange={this.handleChange}/>
-          <select name="operation" onChange={this.handleChange}>
+          <input data-testid="first" type="text" name="firstNo" placeholder="enter the 1st no" value={this.state.firstNo} onChange={this.handleChange}/>
+          <select name="operation" data-testid="operation" onChange={this.handleChange}>
             <option>+</option>
             <option>-</option>
             <option>*</option>
           </select>
-          <input type="text" name="secondNo" placeholder="enter the 2nd no" value={this.state.secondNo} onChange={this.handleChange}/>
+          <input data-testid="second" type="text" name="secondNo" placeholder="enter the 2nd no" value={this.state.secondNo} onChange={this.handleChange}/>
         </div>
         <div className='row'>
-          <button disabled={isDisabled} onClick={this.handleClick}>Calculate</button>
+          <button data-testid="calculate" disabled={isDisabled} onClick={this.handleClick}>Calculate</button>
         </div>
         <div className='row'>
-          <input type="text" name="" placeholder="here is the ans!" value={this.state.ans} readOnly/>
+          <input data-testid="ans" type="text" name="ans" placeholder="here is the ans!" value={this.state.ans} readOnly/>
         </div>
     </div>
     )
