@@ -3,25 +3,15 @@
                               Calculator app | Task management app | Library management app
 
 
-textfield for 1st No                      drop down of operations (+, -, *)                      textfield for 2nd No
+                                             textfield      Save button
 
-                                                  Calculate button
+                                                 checkbox  Get up early (07/31/2020)
 
-                                            textfield for the ans (readonly)
+                                                 checkbox  Program (07/31/2020)
 
-                                              Live algebraic expression
-                                                      10 * 5 = 50
+                                                 checkbox  Go Cycling (07/31/2020)
 
-
-
-
-                                                      OR
-
-                                                  My todo app
-
-                                                      OR
-                                                 
-                                                My library app
+                                              Clear completed todos button (2)
 
 
                                           Copyright 2021 All rights reserved
@@ -29,3 +19,8 @@ textfield for 1st No                      drop down of operations (+, -, *)     
 
                                                       CalculatorApp(state)
                               CalculatorForm                                  LiveAlgebraicExpression
+
+
+                                                        TaskApp (state: todos)
+
+                            TodoForm                TodoList            Clear Completed todos       completed todos counter
