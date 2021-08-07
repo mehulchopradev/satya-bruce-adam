@@ -1,54 +1,66 @@
-import { Component } from "react";
-import CalculatorForm from "../../components/calculator-form/calculator-form.component"
+import { useState, useEffect } from "react";
+import axios from "axios";
+import CalculatorForm from "../../components/calculator-form/calculator-form.component";
 import LiveAlgebraicExpression from "../../components/live-algebraic-expression/live-algebraic-expression.component";
 
-class CalculatorApp extends Component {
+const url = 'https://my-json-server.typicode.com/mehulchopradev/calc-service/defaultCalcData';
 
-  // initial state of the component
-  state = {
-    firstNo: '20',
-    secondNo: '10',
-    ans: '30',
-    operation: '+',
-  }
+function CalculatorApp() {
+  const [defaultCalcData, setDefaultCalcData] = useState({
+    firstNo: '',
+    secondNo: '',
+    operation: '',
+    ans: '',
+  });
 
-  handleChange = (event) => {
+  const { firstNo, secondNo, operation, ans } = defaultCalcData;
+
+  useEffect(() => {
+    // side effect code
+    const fetchDefaultCalcData = async () => {
+      const response = await axios.get(url); // asynchronous IO
+      const data = response.data;
+      setDefaultCalcData(data); //render
+    }
+    fetchDefaultCalcData();
+  }, []); // will run only once when the component is mounted
+
+  const handleChange = (event) => {
     const target = event.target;
     const { name, value } = target;
 
-    // always update internal state using this.setState()
-    this.setState({
-      [name]: value,
-    }); // re render the GUI -> again call internally the render()
-  }
+    setDefaultCalcData({
+      ...defaultCalcData,
+      [name]: value
+    }); // render
+  };
 
-  handleAns = (ans) => {
-    this.setState({
-      ans: ans,
-    }) // render
-  }
+  const handleAns = (ans) => {
+    setDefaultCalcData({
+      ...defaultCalcData,
+      ans,
+    }); //render
+  };
 
-  render() {
-    return (
-      <>
-        <CalculatorForm
-          firstNo={this.state.firstNo}
-          secondNo={this.state.secondNo}
-          ans={this.state.ans}
-          operation={this.state.operation}
-          handleChange={this.handleChange}
-          handleAns={this.handleAns}  
-        />
+  return (
+    <>
+      <CalculatorForm
+        firstNo={firstNo}
+        secondNo={secondNo}
+        ans={ans}
+        operation={operation}
+        handleChange={handleChange}
+        handleAns={handleAns}  
+      />
 
-        <LiveAlgebraicExpression
-          firstNo={this.state.firstNo}
-          secondNo={this.state.secondNo}
-          operation={this.state.operation}
-          ans={this.state.ans}
-        />
-      </>
-    )
-  }
+      <LiveAlgebraicExpression
+        firstNo={firstNo}
+        secondNo={secondNo}
+        operation={operation}
+        ans={ans}
+      />
+    </>
+  )
 }
 
 export default CalculatorApp;

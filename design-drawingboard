@@ -21,6 +21,8 @@
                               CalculatorForm                                  LiveAlgebraicExpression
 
 
-                                                        TaskApp (state: todos)
+                                                        TaskApp (state: todos, checkedTodos)
 
-                            TodoForm                TodoList            Clear Completed todos       completed todos counter
+                            TodoForm                TodoList            Clear Completed todos (checkedTodos)       completed todos counter
+
+                                            TodoItem     TodoItem   TodoItem

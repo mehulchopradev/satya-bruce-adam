@@ -1,33 +1,29 @@
-import { Component } from 'react';
-import './todo-form.styles.scss';
+import React, { useState } from 'react';
 
-class TodoForm extends Component {
+function TodoForm(props) {
+  // returns an array
+  // 1st element -> state variable
+  // 2nd element -> function -> use this function to modify the state variable -> re render of the functional component
+  const [newTodo, setNewTodo] = useState('');
 
-  state = {
-    newTodo: '',
-  }
-
-  handleChange = (event) => {
+  const handleChange = (event) => {
     const v = event.target.value;
-    this.setState({
-      newTodo: v,
-    }); // render()
+    setNewTodo(v); // render
   }
 
-  handleSave = () => {
-    const onNewTodo = this.props.onNewTodo;
-    const newTodo = this.state.newTodo;
+  const handleSave = () => {
+    const onNewTodo = props.onNewTodo;
     onNewTodo(newTodo);
+
+    setNewTodo(''); // render
   }
 
-  render() {
-    return (
-      <div>
-        <input type="text" onChange={this.handleChange} />
-        <button disabled={!this.state.newTodo} onClick={this.handleSave}>Save</button>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <input type="text" value={newTodo} onChange={handleChange} />
+      <button disabled={!newTodo} onClick={handleSave}>Save</button>
+    </div>
+  )
 }
 
-export default TodoForm;
+export default React.memo(TodoForm);
