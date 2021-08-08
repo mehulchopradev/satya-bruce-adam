@@ -23,6 +23,29 @@
 
                                                         TaskApp (state: todos, checkedTodos)
 
-                            TodoForm                TodoList            Clear Completed todos (checkedTodos)       completed todos counter
+                            TodoForm (onNewTodo)            TodoList (todos)            Clear Completed todos (checkedTodos)       completed todos counter
 
                                             TodoItem     TodoItem   TodoItem
+
+
+                                                        Prop Drilling                           Global State Management (data management) -- Redux
+                                                        c1 (state: pqr, abc)                        
+
+
+                                                        c2 (pqr) (abc)
+
+
+                                                        c3 (abc)
+
+
+                                                        c4 (abc)
+
+
+                                                        c5 (abc)
+
+
+
+
+            p1                                              p2
+
+        c3 (should not expect prop abc)                  c4 (should not expect prop abc)

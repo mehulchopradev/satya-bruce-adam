@@ -1,13 +1,20 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-
-// import { connect } from "react-redux";
 import TodoForm from "../../components/todo-form/todo-form.component";
 import TodoList from '../../components/todo-list/todo-list.component';
 
-function TaskApp(/* props */) {
+function TaskApp() {
+  const [todos, setTodos] = useState([]);
   const [checkedTodos, setCheckedTodos] = useState([]);
-  const dispatch = useDispatch();
+
+  const onNewTodo = (newTodo) => {
+    const newTodoObj = {
+      id: todos.length + 1,
+      title: newTodo,
+      createdDate: new Date(),
+    }
+
+    setTodos(todos.concat([newTodoObj])); //render
+  };
 
   const handleChange = (event, todo) => {
     if (event.target.checked) {
@@ -18,22 +25,14 @@ function TaskApp(/* props */) {
   };
 
   const handleClear = () => {
-    // const clearTodos = props.clearTodos;
-    // clearTodos(checkedTodos);
-
-    // const dispatch = props.dispatch;
-    dispatch({
-      type: 'CLEAR_COMPLETED_TODOS',
-      payload: checkedTodos,
-    });
-
+    setTodos(todos.filter(todo => !checkedTodos.includes(todo)))
     setCheckedTodos([]);
   }
 
   return (
     <div>
-      <TodoForm/>
-      <TodoList handleChange={handleChange}/>
+      <TodoForm onNewTodo={onNewTodo}/>
+      <TodoList todos={todos} handleChange={handleChange}/>
       <div>
         <button onClick={handleClear} disabled={checkedTodos.length === 0}>Clear completed todos</button>
         <span>({checkedTodos.length})</span>
@@ -42,16 +41,4 @@ function TaskApp(/* props */) {
   )
 }
 
-/* const mapDispatchToProps = (dispatch) => {
-  return {
-    clearTodos: (checkedTodos) => dispatch({
-      type: 'CLEAR_COMPLETED_TODOS',
-      payload: checkedTodos,
-    }) 
-  }
-} */
-
-// export default connect(null, mapDispatchToProps)(TaskApp);
-
-// export default connect()(TaskApp);
 export default TaskApp;

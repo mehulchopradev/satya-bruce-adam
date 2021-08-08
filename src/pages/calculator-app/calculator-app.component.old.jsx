@@ -37,6 +37,10 @@ class CalculatorApp extends Component {
     this.setState(data); // render
   }
 
+  componentWillUnmount() {
+    // code to releease resources / clear up things
+  }
+
   render() {
     return (
       <>

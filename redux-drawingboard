@@ -1,0 +1,21 @@
+            Redux  (Global state management)                       Middleware                                                            React
+
+          Store (Entire app Global data)                                                                        c1  --- connect() -- state.todosReducer.todos
+                                                                                                         
+                                                                                                                c2  --- connect() -- dispatch(action) -- action : {
+                                                                                                                  type: 'new_todo',
+                                                                                                                  payload: 'todo 1'
+                                                                                                                }
+      Root Reducer (entity that manages app level store data)
+                                                                                                                c3
+
+                                                                                                                c4 --- connect() -- state.todosReducer.todos
+                                                                                                                                 -- state.CalculationHistory.history
+CalculationHistory Reducer ('new_todo')      Todos Reducer ('new_todo')         LibraryReducer ('new_todo')
+
+                                              - I recognize 'new_todo'
+                                              - Extract new todo from payload
+                                              - Add new todo to my state (todos)
+                                              - redux store will then cause a re render of all other 
+                                              components that depend upon todosReducer state
+                                                - c1, c4 will re render
