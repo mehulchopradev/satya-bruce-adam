@@ -1,10 +1,12 @@
+import TODO_ACTION_TYPES from './todos.types';
+
 const INITIAL_STATE = {
   todos: [],
 };
 
 const todosReducer = (currentState = INITIAL_STATE, action) => {
   switch(action.type) {
-    case 'NEW_TODO':
+    case TODO_ACTION_TYPES.NEW_TODO:
       const newTodo = action.payload;
 
       const newTodoObj = {
@@ -16,7 +18,7 @@ const todosReducer = (currentState = INITIAL_STATE, action) => {
         ...currentState,
         todos: currentState.todos.concat([newTodoObj])
       }
-    case 'CLEAR_COMPLETED_TODOS':
+    case TODO_ACTION_TYPES.CLEAR_COMPLETED_TODOS:
       const checkedTodos = action.payload;
       return {
         ...currentState,

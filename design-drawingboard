@@ -2,19 +2,26 @@
 
                               Calculator app | Task management app | Library management app
 
+                                                Welcome to my library!
 
-                                             textfield      Save button
+                                                 Add new book button
 
-                                                 checkbox  Get up early (07/31/2020)
 
-                                                 checkbox  Program (07/31/2020)
+                            Table consisting of all the books in the library (id, title, Details hyperlink)
+                                                        OR
 
-                                                 checkbox  Go Cycling (07/31/2020)
-
-                                              Clear completed todos button (2)
+                                                 Title of the book
+                                                 id: 78657678
+                                                 Price: 9000
+                                                 Pages: 1000
 
 
                                           Copyright 2021 All rights reserved
+
+
+
+                                          
+
 
 
                                                       CalculatorApp(state)

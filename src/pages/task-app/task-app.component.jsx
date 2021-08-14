@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
+import { clearCompletedTodos } from "../../redux/todos.actions";
+
 // import { connect } from "react-redux";
 import TodoForm from "../../components/todo-form/todo-form.component";
 import TodoList from '../../components/todo-list/todo-list.component';
@@ -22,10 +24,7 @@ function TaskApp(/* props */) {
     // clearTodos(checkedTodos);
 
     // const dispatch = props.dispatch;
-    dispatch({
-      type: 'CLEAR_COMPLETED_TODOS',
-      payload: checkedTodos,
-    });
+    dispatch(clearCompletedTodos(checkedTodos));
 
     setCheckedTodos([]);
   }

@@ -11,12 +11,12 @@ function App() {
     <div className='app-container'>
       <h1>Welcome to my utility application</h1>
       <div>
-        <Link to="/calc">Calculator app</Link>| <Link to="/todos">Task management app</Link>| <Link to="/lib">Library management app</Link>
+        <Link to="/calc">Calculator app</Link>| <Link to="/todos">Task management app</Link>| <Link to="/library">Library management app</Link>
       </div>
 
       <Route path='/calc' component={CalculatorApp}/>
       <Route path='/todos' component={TaskApp}/>
-      <Route path='/lib' component={LibraryApp}/>
+      <Route path='/library' component={LibraryApp}/>
 
       <footer>
         Copyright 2021 All rights reserved.

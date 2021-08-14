@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { createNewTodo } from '../../redux/todos.actions';
+
 // import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
@@ -20,10 +22,7 @@ function TodoForm(props) {
     // onNewTodo(newTodo);
 
     // const dispatch = props.dispatch;
-    dispatch({
-      type: 'NEW_TODO',
-      payload: newTodo,
-    });
+    dispatch(createNewTodo(newTodo));
 
     setNewTodo(''); // render
   }
