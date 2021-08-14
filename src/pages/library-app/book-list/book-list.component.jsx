@@ -1,8 +1,9 @@
 import './book-list.styles.scss';
 
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-function BookList() {
+function BookList(props) {
   const books = useSelector((state) => state.libraryReducer.books);
 
   return (
@@ -22,7 +23,7 @@ function BookList() {
               <tr key={book.id}>
                 <td>{book.id}</td>
                 <td>{book.title}</td>
-                <td><a href="">Details</a></td>
+                <td><Link to={`/library/book-details/${book.id}`}>Details</Link></td>
               </tr>
             ))
           }

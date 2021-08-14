@@ -12,6 +12,22 @@ const libraryReducer = (currentState = INITIAL_STATE, action) => {
         ...currentState,
         books: newBooks,
       }
+    case LIBRARY_ACTION_TYPES.UPDATE_BOOK:
+      const updatedBook = action.payload;
+      const books = currentState.books.concat([]);
+
+      for (let i = 0; i < books.length; i++) {
+        const book = books[i];
+        if (book.id === updatedBook.id) {
+          books[i] = updatedBook;
+          break;
+        }
+      }
+      
+      return {
+        ...currentState,
+        books,
+      }
     default:
       return currentState;
   }

@@ -6,3 +6,10 @@ export const setBooks = (newBooks) => {
     payload: newBooks,
   }
 }
+
+export const updateBook = (updatedBook) => {
+  return {
+    type: LIBRARY_ACTION_TYPES.UPDATE_BOOK,
+    payload: updatedBook,
+  }
+}
