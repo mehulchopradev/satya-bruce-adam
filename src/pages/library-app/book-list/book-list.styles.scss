@@ -1,4 +1,8 @@
 .book-list {
+  position: relative;
+  background-color: honeydew;
+  z-index: 2;
+
   table {
     margin-left: 0;
     margin-right: 0;

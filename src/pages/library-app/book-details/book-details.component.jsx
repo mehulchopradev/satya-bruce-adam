@@ -1,12 +1,9 @@
 import { useParams } from "react-router";
-import axios from "axios";
 import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { updateBook } from "../../../redux/library/library.actions";
-
-const URL = 'http://localhost:3002/books';
+import { fetchBookAsync } from "../../../redux/library/library.actions";
 
 function BookDetails() {
   const { bookId } = useParams();
@@ -14,13 +11,14 @@ function BookDetails() {
   const book = useSelector((state) => state.libraryReducer.books.find(book => book.id === bookId));
 
   useEffect(() => {
-    const fetchBookDetails = async () => {
+    /* const fetchBookDetails = async () => {
       const response = await axios.get(`${URL}/${bookId}`);
       const { data } = response;
 
       dispatch(updateBook(data));
     }
-    fetchBookDetails();
+    fetchBookDetails(); */
+    dispatch(fetchBookAsync(bookId))
   }, [bookId, dispatch]);
 
   return (
