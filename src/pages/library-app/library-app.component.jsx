@@ -45,9 +45,7 @@ function LibraryApp(props) {
   }, [dispatch]);
 
   if (isError) {
-    return (
-      <h3>Something went wrong. Please try again later!</h3>
-    )
+    throw new Error('Unable to fetch the books');
   }
 
   return (

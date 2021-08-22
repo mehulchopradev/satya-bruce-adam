@@ -1,9 +1,13 @@
-import { useState } from "react";
-import TodoForm from "../../components/todo-form/todo-form.component";
+import { useState, useContext } from "react";
+import TodoForm from "../../components/todo-form/todo-form.component.preredux";
 import TodoList from '../../components/todo-list/todo-list.component';
+import TodosContext from "../../context/todos.context";
 
 function TaskApp() {
-  const [todos, setTodos] = useState([]);
+  // const [todos, setTodos] = useState([]);
+  const existingTodos = useContext(TodosContext);
+  const [todos, setTodos] = useState(existingTodos);
+
   const [checkedTodos, setCheckedTodos] = useState([]);
 
   const onNewTodo = (newTodo) => {
@@ -32,7 +36,9 @@ function TaskApp() {
   return (
     <div>
       <TodoForm onNewTodo={onNewTodo}/>
-      <TodoList todos={todos} handleChange={handleChange}/>
+      <TodosContext.Provider value={todos}>
+        <TodoList handleChange={handleChange}/>
+      </TodosContext.Provider>
       <div>
         <button onClick={handleClear} disabled={checkedTodos.length === 0}>Clear completed todos</button>
         <span>({checkedTodos.length})</span>
